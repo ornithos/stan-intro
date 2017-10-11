@@ -1,0 +1,23 @@
+data {
+    int<lower=0> N;
+    int<lower=0> p;
+
+    matrix[N, p] X;
+    int<lower=0,upper=1> y[N];
+}
+transformed data {
+    matrix[N, p] Xsqrt;
+    Xsqrt = sqrt(X);
+}
+parameters {
+    vector[p] beta;
+}
+
+model {
+    vector[N] gamma;
+    gamma = Xsqrt*beta;
+
+    beta ~ normal(0, 1);
+    for (n in 1:N)
+        y[n] ~ bernoulli_logit(gamma[n]^2);
+}

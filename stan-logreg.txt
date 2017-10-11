@@ -1,0 +1,20 @@
+data {
+    int<lower=0> N;
+    int<lower=0> p;
+
+    matrix[N, p] X;
+    int<lower=0,upper=1> y[N];
+}
+
+parameters {
+    vector[p] beta;
+}
+
+model {
+    vector[N] gamma;
+    gamma = X*beta;
+
+    beta ~ normal(0, 1);
+    for (n in 1:N)
+        y[n] ~ bernoulli_logit(gamma[n]);
+}
