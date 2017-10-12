@@ -1,7 +1,7 @@
 #include <Eigen/Dense>
+#include <vector>
 
 using Eigen::Matrix;
-using Eigen::MatrixXd;
 using Eigen::Dynamic;
 
 inline double mydotprod(const Matrix<double, 1, Dynamic>& x, const Matrix<double, Dynamic, 1>& y, std::ostream* pstream) {

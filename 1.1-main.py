@@ -18,7 +18,7 @@ with open("tmp.hpp", "w") as f:
     f.write(tmpHeaderTxt)
 
 
-if True:
+if False:
     bayes_logreg2_native = StanModel(model_code=stan_code)
     # stan_fit_native    = bayes_logreg2_native.sampling(data=stan_data_dict, iter=2000, chains=2);
     stan_optim2    = bayes_logreg2_native.optimizing(data=stan_data_dict, iter=50000);

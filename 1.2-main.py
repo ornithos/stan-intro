@@ -18,12 +18,12 @@ with open("tmp.hpp", "w") as f:
         tmpHeaderTxt = f_cur.read()
     f.write(tmpHeaderTxt)
 
-initBeta = ['beta':{np.arange(-3,3,0.2)*0.05}]
+initBeta = [{'beta': np.arange(-3,3,0.2)*0.05}]
 
 if True:
     bayes_logreg3_native = StanModel(model_code=stan_code)
     # stan_fit_native    = bayes_logreg2_native.sampling(data=stan_data_dict, iter=2000, chains=2);
-    stan_optim3          = bayes_logreg3_native.optimizing(data=stan_data_dict, iter=50000);
+    stan_optim3          = bayes_logreg3_native.optimizing(data=stan_data_dict, iter=50000, init=initBeta);
 
 if True:
     #print("optimum value of original (sq) NLL is {}".format(stan_optim2))
@@ -33,4 +33,4 @@ if True:
         stan_code_my  = f.read()
     bayes_logreg3_my  = StanModel(model_code=stan_code_my, allow_undefined=True,
                                  includes=['tmp.hpp'], include_dirs=["."])
-    stan_optim3_my    = bayes_logreg3_my.optimizing(data=stan_data_dict, iter=50000);
+    stan_optim3_my    = bayes_logreg3_my.optimizing(data=stan_data_dict, iter=50000, init=initBeta);

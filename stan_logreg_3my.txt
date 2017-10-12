@@ -18,7 +18,7 @@ model {
     beta ~ normal(0, 1);
 
     for(n in 1:N) {
-        gamma[n] = X[n,:]*beta;
+        gamma[n] = mydotprod(X[n,:], beta);
     }
 
     for (n in 1:N)
