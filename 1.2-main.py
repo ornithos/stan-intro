@@ -20,7 +20,7 @@ with open("tmp.hpp", "w") as f:
 
 initBeta = [{'beta': np.arange(-3,3,0.2)*0.05}]
 
-if True:
+if False:
     bayes_logreg3_native = StanModel(model_code=stan_code)
     # stan_fit_native    = bayes_logreg2_native.sampling(data=stan_data_dict, iter=2000, chains=2);
     stan_optim3          = bayes_logreg3_native.optimizing(data=stan_data_dict, iter=50000, init=initBeta);
@@ -31,6 +31,9 @@ if True:
     print("Now onto the customised version...")
     with open("stan_logreg_3my.txt") as f:
         stan_code_my  = f.read()
-    bayes_logreg3_my  = StanModel(model_code=stan_code_my, allow_undefined=True,
+    if False:
+        bayes_logreg3_my  = StanModel(model_code=stan_code_my, allow_undefined=True,
                                  includes=['tmp.hpp'], include_dirs=["."])
+
+    bayes_logreg3_my = StanModel(model_code=stan_code_my)
     stan_optim3_my    = bayes_logreg3_my.optimizing(data=stan_data_dict, iter=50000, init=initBeta);

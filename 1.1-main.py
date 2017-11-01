@@ -8,8 +8,8 @@ data_wc    = load_breast_cancer()
 with open("stan-logreg_2.txt") as f:
     stan_code = f.read()
 
-stan_data_dict = {'N': data_wc.target.size, 'p': data_wc.data.shape[1],
-                  'X': data_wc.data, 'y': data_wc.target}
+stan_data_dict = {'N': data_wc.target.size, 'p': 1, #data_wc.data.shape[1],
+                  'X': data_wc.data[:,[0]], 'y': data_wc.target}
 
 tmpHeader = "my-multiply.txt"
 with open("tmp.hpp", "w") as f:

@@ -18,9 +18,11 @@ parameters {
 
 model {
     vector[N] gamma;
+    vector[N] xi;
     gamma = Xsqrt*beta;
+    xi = X*beta;
 
     beta ~ normal(0, 1);
     for (n in 1:N)
-        y[n] ~ bernoulli_logit(mymultiply(gamma[n], gamma[n]));
+        y[n] ~ bernoulli_logit(mymultiply(xi[n], gamma[n]));
 }
