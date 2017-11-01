@@ -1,0 +1,33 @@
+functions {
+    real mydotprod(real v1, real v2);
+}
+data {
+    int<lower=0> N;
+    int<lower=0> p;
+
+    matrix[N, p] X;
+    int<lower=0,upper=1> y[N];
+}
+
+parameters {
+    vector[p] beta;
+}
+
+model {
+    vector[N] gamma;
+    beta ~ normal(0, 1);
+
+    for(n in 1:N) {
+        /*matrix[1,1] a;
+        matrix[1,1] b;
+        a[1,1]  = X[n,1];
+        b[1,1]  = beta[1];
+        gamma[n] = mydotprod(a, b);*/
+        real a = X[n,1];
+        real b = beta[1];
+        gamma[n] = mydotprod(a, b);
+    }
+
+    for (n in 1:N)
+        y[n] ~ bernoulli_logit(gamma[n]);
+}
