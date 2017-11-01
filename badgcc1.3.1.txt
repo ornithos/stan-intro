@@ -1,0 +1,70 @@
+In file included from /var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/stanfit4anon_model_020857db9c15044d7dea99844146ca74_5252960507783000846.cpp:592:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/numpy/core/include/numpy/arrayobject.h:4:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/numpy/core/include/numpy/ndarrayobject.h:18:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/numpy/core/include/numpy/ndarraytypes.h:1790:
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: "Using deprecated NumPy API, disable it by "          "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
+#warning "Using deprecated NumPy API, disable it by " \
+ ^
+/var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/stanfit4anon_model_020857db9c15044d7dea99844146ca74_5252960507783000846.cpp:9120:30: warning: comparison of integers of different signs: 'Py_ssize_t' (aka 'long') and 'size_type' (aka 'unsigned long') [-Wsign-compare]
+    __pyx_t_12 = ((__pyx_t_9 != __pyx_v_fitptr->param_names_oi().size()) != 0);
+                   ~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/stanfit4anon_model_020857db9c15044d7dea99844146ca74_5252960507783000846.cpp:596:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan_fit.hpp:22:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/src/stan/services/diagnose/diagnose.hpp:10:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/src/stan/model/test_gradients.hpp:7:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/src/stan/model/log_prob_grad.hpp:4:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/rev/mat.hpp:12:
+In file included from /Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat.hpp:55:
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat/fun/assign.hpp:49:11: error: assigning to 'double' from incompatible type 'const stan::math::var'
+      x = y;
+          ^
+/var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/anon_model_020857db9c15044d7dea99844146ca74.hpp:233:33: note: in instantiation of function template specialization 'stan::math::assign<double, stan::math::var>' requested here
+                    stan::math::assign(get_base1_lhs(gamma,n,"gamma",1), mydotprod(get_base1(X,n,1,"X",1),beta, pstream__));
+                                ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/src/stan/services/util/initialize.hpp:114:39: note: in instantiation of function template specialization 'anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74::log_prob<false, true, double>' requested here
+            log_prob = model.template log_prob<false, true>
+                                      ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/src/stan/services/diagnose/diagnose.hpp:54:19: note: in instantiation of function template specialization 'stan::services::util::initialize<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74, boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> > >' requested here
+          = util::initialize(model, init, rng, init_radius,
+                  ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan_fit.hpp:848:49: note: in instantiation of function template specialization 'stan::services::diagnose::diagnose<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74>' requested here
+        return_code = stan::services::diagnose::diagnose(model,
+                                                ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan_fit.hpp:1524:15: note: in instantiation of function template specialization 'pystan::(anonymous namespace)::command<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74, boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> > >' requested here
+        ret = command(args, model_, holder, names_oi_tidx_,
+              ^
+/var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/stanfit4anon_model_020857db9c15044d7dea99844146ca74_5252960507783000846.cpp:9159:34: note: in instantiation of member function 'pystan::stan_fit<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74, boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> > >::call_sampler' requested here
+    __pyx_t_14 = __pyx_v_fitptr->call_sampler((*__pyx_v_argsptr), (*__pyx_v_holderptr));
+                                 ^
+In file included from /var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/stanfit4anon_model_020857db9c15044d7dea99844146ca74_5252960507783000846.cpp:598:
+/var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/anon_model_020857db9c15044d7dea99844146ca74.hpp:233:21: error: no matching function for call to 'assign'
+                    stan::math::assign(get_base1_lhs(gamma,n,"gamma",1), mydotprod(get_base1(X,n,1,"X",1),beta, pstream__));
+                    ^~~~~~~~~~~~~~~~~~
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/src/stan/services/optimize/newton.hpp:61:31: note: in instantiation of function template specialization 'anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74::log_prob<false, false, double>' requested here
+          lp = model.template log_prob<false, false>(cont_vector, disc_vector,
+                              ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan_fit.hpp:868:41: note: in instantiation of function template specialization 'stan::services::optimize::newton<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74>' requested here
+            = stan::services::optimize::newton(model, *init_context_ptr,
+                                        ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan_fit.hpp:1524:15: note: in instantiation of function template specialization 'pystan::(anonymous namespace)::command<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74, boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> > >' requested here
+        ret = command(args, model_, holder, names_oi_tidx_,
+              ^
+/var/folders/0f/869mzswx2vq3dyvd_rjnc2h80000gp/T/tmpp_p0d5_7/stanfit4anon_model_020857db9c15044d7dea99844146ca74_5252960507783000846.cpp:9159:34: note: in instantiation of member function 'pystan::stan_fit<anon_model_020857db9c15044d7dea99844146ca74_namespace::anon_model_020857db9c15044d7dea99844146ca74, boost::random::additive_combine_engine<boost::random::linear_congruential_engine<unsigned int, 40014, 0, 2147483563>, boost::random::linear_congruential_engine<unsigned int, 40692, 0, 2147483399> > >::call_sampler' requested here
+    __pyx_t_14 = __pyx_v_fitptr->call_sampler((*__pyx_v_argsptr), (*__pyx_v_holderptr));
+                                 ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat/fun/assign.hpp:48:5: note: candidate template ignored: substitution failure [with T_lhs = double, T_rhs = stan::math::var]
+    assign(T_lhs& x, const T_rhs& y) {
+    ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat/fun/assign.hpp:74:5: note: candidate template ignored: could not match 'Matrix<type-parameter-0-0, R1, C1, AutoAlign | ((R1 == 1 && C1 != 1) ? Eigen::RowMajor : (C1 == 1 && R1 != 1) ? Eigen::ColMajor : Eigen::ColMajor), R1, C1>' against 'double'
+    assign(Eigen::Matrix<T_lhs, R1, C1>& x,
+    ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat/fun/assign.hpp:110:5: note: candidate template ignored: could not match 'Matrix<type-parameter-0-0, R1, C1, AutoAlign | ((R1 == 1 && C1 != 1) ? Eigen::RowMajor : (C1 == 1 && R1 != 1) ? Eigen::ColMajor : Eigen::ColMajor), R1, C1>' against 'double'
+    assign(Eigen::Matrix<T_lhs, R, C>& x,
+    ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat/fun/assign.hpp:144:5: note: candidate template ignored: could not match 'Block<type-parameter-0-0, -1, -1, false>' against 'double'
+    assign(Eigen::Block<T_lhs> x,
+    ^
+/Users/alexbird/anaconda3/envs/testpystan/lib/python3.5/site-packages/src/pystan/pystan/stan/lib/stan_math/stan/math/prim/mat/fun/assign.hpp:178:5: note: candidate template ignored: could not match 'vector<type-parameter-0-0, allocator<type-parameter-0-0> >' against 'double'
+    assign(std::vector<T_lhs>& x, const std::vector<T_rhs>& y) {
+    ^
+2 warnings and 2 errors generated.
