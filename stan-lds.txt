@@ -1,0 +1,39 @@
+data {
+    // read in data from API
+
+    int N;
+    int p;
+    int n;
+    matrix[p,N] Y;
+
+    matrix[n,n] A;
+    matrix[n,n] Q;
+    matrix[p,n] C;
+    matrix[p,p] R;
+    real<lower=1e-16> x0cov_mult;
+}
+
+transformed data {
+    // Construct X0 prior from dimensions specified.
+
+    vector[n]    x0mu;
+    matrix[n,n]  x0cov;
+    x0mu  = rep_vector(0, n);
+    x0cov = diag_matrix(rep_vector(1, n))*x0cov_mult;
+}
+
+parameters {
+    vector[n]    x0;
+    matrix[n, N] X;
+}
+
+model {
+    x0     ~ multi_normal(x0mu, x0cov);
+    X[:,1] ~ multi_normal(A*x0, Q);
+    Y[:,1] ~ multi_normal(C*X[:,1], R);
+
+    for(i in 2:N) {
+        X[:,i] ~ multi_normal(A*X[:,i-1], Q);
+        Y[:,i] ~ multi_normal(C*X[:,1], R);
+    }
+}
