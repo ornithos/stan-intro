@@ -1,10 +1,11 @@
 #include <vector>
 
 
-void spline_eval(double *t, double x, int k, int m, int *left, double *basis) {
+void spline_eval(double *t, double x, int T, int k, int m, int *left, double *basis) {
     /* --------------------------------------------
      * t      - (array) knots
      * x      - (double) evaluation point
+     * T      - (int) num of knots
      * k      - (int) degree (n.b. not order!)
      * m      - (int) derivative
      * left   - (int ptr) first non-zero basis vector
@@ -16,10 +17,24 @@ void spline_eval(double *t, double x, int k, int m, int *left, double *basis) {
     double xb, xa, w;
     int ind, j, n;
 
+    /* find corresponding knot region t[left] <= x <= t[left+1]*/
     *left = 0;
-    while (x > t[*left+1]) {
-        *left += 1;
+    for (int ii = 0; ii < T-1; ++ii) {
+        if (x > t[ii+1]) {
+            *left += 1;
+            continue;
+        }
+        /* a little obscure: if equality, keep going, but if
+         * a larger value is found, place ptr just before it.
+         * This ensures a non-empty region if possible. */
+        if (x < t[ii+1]) {
+            if (x == t[ii]) {
+                *left = ii;
+            }
+            break;
+        }
     }
+
     /*
      * From scipy. A little different to deBoor (1978/2001):
      * deBoor uses only a single array h, *but* uses a vector for
@@ -97,7 +112,7 @@ void function_eval(double *x, double *t, int k, double *result,
             xx = t[T-k];
         }
 
-        spline_eval(t, xx, k, deriv, &left, basis);
+        spline_eval(t, xx, T, k, deriv, &left, basis);
 
         /* calculate fnval  */
         double fnval = 0;
@@ -107,3 +122,49 @@ void function_eval(double *x, double *t, int k, double *result,
         result[el] = fnval;
     }
 }
+
+/* Evaluate derivative: two differences:
+ * (i)  deriv = 1 (obviously)
+ * (ii) out-of-bounds strategy = 0, rather than const extrapolation */
+void deriv_eval(double *x, double *t, int k, double *result,
+                    double *coeffs, int T, int N) {
+    /* --------------------------------------------
+     * x      - (dbl array) evaluation array
+     * t      - (dbl array) knots
+     * k      - (int) degree (n.b. not order!)
+     * result - (dbl array) result array (output)
+     * coeffs - (dbl array) coefficient array
+     * T      - (int) dim. of t
+     * N      - (int) dim. of x (these to be replaced when using vector/eigen type)
+     * --------------------------------------------
+     */
+    double basis[k+1];
+    int left      = 0;
+    int deriv     = 1;
+
+    /* Actual spline evaluation */
+    for(int el = 0; el < N; el++) {
+
+        /* deal with boundaries (constant strategy)
+         * (NOTICE DIFFERENCE TO function_eval) */
+        double xx = x[el];
+        if(x[el] < t[k]) {
+            result[el] = 0;
+            continue;
+        } else if(x[el] > t[T-k]) {
+            result[el] = 0;
+            continue;
+        }
+
+        spline_eval(t, xx, T, k, deriv, &left, basis);
+
+        /* calculate fnval  */
+        double fnval = 0;
+        for(int i=0; i < k + 1; i++) {
+            fnval += basis[i] * coeffs[left -k + i];
+        }
+        result[el] = fnval;
+    }
+}
+
+/* ---- OUT OF BOUNDS NOT CHECKED FOR. COEFF VECTOR MUST BE OF LENGTH T-k, etc. ---- */

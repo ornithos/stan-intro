@@ -4,6 +4,7 @@
 #include <stdlib.h>     /* atoi */
 #include <iostream>
 #include <vector>
+#include <string.h>     /* strcmp*/
 #include "deboor_spline.hpp"
 
 
@@ -30,6 +31,16 @@ int main(int argc, char *argv[]) {
         N = atoi(argv[3]);
     }
 
+    // find if derivative
+    const char* char_d = "d";
+    int deriv = 0;
+    if(strcmp(argv[argc-1], char_d) == 0) {
+//        printf("Got derivative flag!\n");
+        deriv = 1;
+        argc--;
+    }
+
+    // define all inputs
     std::vector<double> arrKnots(T);
     std::vector<double> coeffs(T-k);
     double x[N];
@@ -104,7 +115,12 @@ int main(int argc, char *argv[]) {
 
     std::vector<double> basis(k+1);
     double result[k+1];
-    function_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
+    if (!deriv) {
+        function_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
+    }
+    else {
+        deriv_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
+    }
 
     /* Actual spline evaluation */
     for(int el = 0; el < N; el++) {
