@@ -116,10 +116,10 @@ int main(int argc, char *argv[]) {
     std::vector<double> basis(k+1);
     double result[k+1];
     if (!deriv) {
-        function_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
+        bspline::function_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
     }
     else {
-        deriv_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
+        bspline::deriv_eval(x, &arrKnots[0], k, result, &coeffs[0], T, N);
     }
 
     /* Actual spline evaluation */
